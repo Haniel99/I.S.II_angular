@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 
+interface IEmployee{
+  
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
 
   constructor() { }
-  getEmployees() {
-    return {
-      "empleados": [
+  
+  public getEmployees() {
+    return [
         {
           "id": 1,
           "nombre": "Juan Pérez",
@@ -100,7 +104,7 @@ export class EmployeesService {
           "telefono": "444-333-2222"
         }
       ]
-    }
+    
     
   }
 
