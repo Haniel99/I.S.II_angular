@@ -1,38 +1,36 @@
 
 <!-- Filtros y agregar -->
-<div class="flex justify-between">
+<div class="flex justify-between mt-14 container m-auto">
+    <div class="flex ">
 
-    <div class="flex">
-        <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
-            Ordenar por
+        <div class="flex mr-4">
+            <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
+                Ordenar por
+            </div>
+            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full p-2.5 focus:outline-none">
+                <option selected>Ninguno</option>
+                <option value="nombre">Nombre</option>
+                <option value="salario">Salario</option>
+            </select>
         </div>
-        <select id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full p-2.5">
-            <option selected>Escoge una opcion</option>
-            <option value="nombre">Nombre</option>
-            <option value="salario">Salario</option>
-        </select>
-    </div>
-
-    <div class="flex">
-        <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
-            Filtrar por departamento
-        </div>
-        <select id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full p-2.5">
-            <option selected>Selecciona un departamento</option>
-            <option value="nombre">Departamento 1</option>
-            <option value="salario">Departamento 2</option>
-        </select>
-    </div>
-
     
+        <div class="flex">
+            <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
+                Filtrar por departamento
+            </div>
+            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full p-2.5 focus:outline-none">
+                <option selected>Todos</option>
+                <option value="d1">Departamento 1</option>
+                <option value="d2">Departamento 2</option>
+            </select>
+        </div>
 
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
+    </div>
+
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">
         <i class="fa-solid fa-plus"></i>
         Agregar
     </button>
 
-</div>
-
-<div class="">
 
 </div>
