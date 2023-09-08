@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+
+export interface Employee {
+  id: number;
+  nombre: string;
+  puesto: string;
+  salario: number;
+  departamento: string;
+  ubicacion: string;
+  telefono: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class EmployeesService {
 
-  constructor() { }
-  getEmployees() {
-    return {
-      "empleados": [
+  
+  private employees: Employee[] = [
         {
           "id": 1,
           "nombre": "Juan Pérez",
@@ -99,9 +111,23 @@ export class EmployeesService {
           "ubicacion": "Ciudad A",
           "telefono": "444-333-2222"
         }
-      ]
-    }
+      ];
+  
+  getEmployees(): Employee[] {
+    return this.employees;
+  }
+  
+  createEmployee(employee: Employee): void {
+    const employeeCopy = JSON.parse(JSON.stringify(employee));
     
+    // Obtén el ID más alto del arreglo existente
+    const maxId = this.employees.reduce((max, emp) => (emp.id > max ? emp.id : max), 0);
+    
+    // Asigna el nuevo ID incrementado al empleado
+    employeeCopy.id = maxId + 1;
+    
+    // Agrega el empleado al arreglo
+    this.employees.push(employeeCopy);
   }
 
 }

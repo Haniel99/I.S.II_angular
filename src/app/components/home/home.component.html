@@ -30,7 +30,7 @@
 
     </div>
 
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5" routerLink="/create">
         <i class="fa-solid fa-plus"></i>
         Agregar
     </button>
@@ -80,47 +80,45 @@
                     </tr>
                 </thead>
 
-                <tbody class="bg-white">
+                <tbody class="bg-white" *ngFor="let empleados of emp">
                     <tr>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="flex items-center">
-                                <p>1</p>
+                              <p>{{empleados.id}}</p>
                             </div>
-
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+            
+                          </td>
+            
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="text-sm leading-5 text-gray-900">
-                                <p>Mauricio Benavides</p>
+                              <p>{{empleados.nombre}}</p>  
                             </div>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <p>Product Owner</p>
-                        </td>
-
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <p>1.000</p>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="text-sm leading-5 text-gray-900">
-                                <p>ICCI</p>
-                            </div>
-                        </td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="text-sm leading-5 text-gray-900">
-                                <p>Arica</p>
-                            </div>
-                        </td>
-
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <p>+56912345678</p>
-                        </td>
+                          </td>
+            
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <p>{{empleados.puesto}}</p>
+                          </td>
+            
+                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                              <p>{{empleados.salario}}</p>
+                          </td>
+          
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <div class="text-sm leading-5 text-gray-900">
+                                <p>{{empleados.departamento}}</p>  
+                              </div>
+                          </td>
+          
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <div class="text-sm leading-5 text-gray-900">
+                                <p>{{empleados.ubicacion}}</p>  
+                              </div>
+                          </td>
+          
+                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                              <p>{{empleados.telefono}}</p>
+                          </td>
 
                         <td
                             class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
@@ -147,3 +145,4 @@
         </div>
     </div>
 </div>
+
