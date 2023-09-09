@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
- 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateComponent } from './components/create/create.component';
 import { UpdateComponent } from './components/update/update.component';
 import { DeleteComponent } from './components/delete/delete.component';
-import { HttpClientModule } from "@angular/common/http";
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from "./components/component.reducer";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeesService } from './services/employees.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +23,12 @@ import { counterReducer } from "./components/component.reducer";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ toggle: counterReducer })
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    EmployeesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
