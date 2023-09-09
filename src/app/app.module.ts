@@ -9,6 +9,7 @@ import { CreateComponent } from './components/create/create.component';
 import { UpdateComponent } from './components/update/update.component';
 import { DeleteComponent } from './components/delete/delete.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeesService } from './services/employees.service';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EmployeesService } from './services/employees.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     EmployeesService

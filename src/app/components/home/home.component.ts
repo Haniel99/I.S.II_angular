@@ -14,4 +14,10 @@ emp?: any;
 constructor (private employeesService: EmployeesService) {
   this.emp = this.employeesService.getEmployees();
 }
+
+eliminarEmpleado(id: number): void {
+  this.employeesService.deleteEmployee(id);
+  this.emp = this.employeesService.getEmployees();
+}
+
 }

@@ -130,4 +130,12 @@ export class EmployeesService {
     this.employees.push(employeeCopy);
   }
 
+  deleteEmployee(id: number): void {
+    const index = this.employees.findIndex(emp => emp.id === id);
+    if (index !== -1) {
+      this.employees.splice(index, 1);
+    }
+  }
+  
+
 }
