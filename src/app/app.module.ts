@@ -7,9 +7,9 @@ import { HomeComponent } from './components/home/home.component';
 import { CreateComponent } from './components/create/create.component';
 import { UpdateComponent } from './components/update/update.component';
 import { DeleteComponent } from './components/delete/delete.component';
-
 import { HttpClientModule } from "@angular/common/http";
-
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from "./components/component.reducer";
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,8 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ toggle: counterReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 <!-- Filtros y agregar -->
+<app-delete *ngIf="toggle" ></app-delete>
 <div class="flex justify-between mt-14 container m-auto">
     <div class="flex ">
 
@@ -30,7 +31,7 @@
 
     </div>
 
-    <button (click)="getServerData()" type="button"
+    <button type="button"
         class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">
         <i class="fa-solid fa-plus"></i>
         Agregar
@@ -129,7 +130,7 @@
 
                         <td
                             class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">
+                            <a class="text-indigo-600 hover:text-indigo-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -138,7 +139,10 @@
                             </a>
 
                         <td class="text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                            <a  
+                            (click)="click()"
+                            class="cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg"
                                     class="w-6 h-6 text-red-600 hover:text-red-800" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

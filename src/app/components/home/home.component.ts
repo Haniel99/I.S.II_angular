@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
-import { EmployeesService } from 'src/app/services/employees.service';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { toggle } from '../components.actions';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  constructor( 
-    private empService: EmployeesService
-   ){}
+export class HomeComponent implements OnInit {
+  toggle?: boolean;
 
-  getServerData(){
-    this.empService.getEmployees().subscribe(res=>{
-      console.log(res);
+  constructor(private store: Store<{ toggle: boolean }>) {
+    this.store.select('toggle').subscribe(s=>{
+      this.toggle = s;
     })
-  } 
+  }
+  ngOnInit() {}
+ 
+  click() {
+    this.store.dispatch(toggle());
+  }
+
+  
 }
