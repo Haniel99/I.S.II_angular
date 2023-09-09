@@ -1,54 +1,104 @@
+<section class="container mx-auto py-12">
+  <div class="flex flex-col items-center">
+    <h2 class="mb-10 text-2xl font-bold text-gray-900">Agregar Empleado</h2>
+    <form [formGroup]="form" (ngSubmit)="createEmployee()">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="w-full">
+          <label for="name" class="block mb-2 text-sm text-gray-900">Nombre</label>
+          <input type="text"
+            formControlName="nombre"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          >
+          <span class="text-sm text-red-500" *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+            El campo <strong>nombre</strong> es obligatorio
+          </span>
+        </div>
+        <div class="w-full">
+          <label for="apellido" class="block mb-2 text-sm text-gray-900">Apellido</label>
+          <input type="text" 
+            formControlName="apellido"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          >
+          <span class="text-sm text-red-500" *ngIf="form.get('apellido')?.hasError('required') && form.get('apellido')?.touched">
+            El campo <strong>apellido</strong> es obligatorio
+          </span>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="puesto" class="block mb-2 text-sm text-gray-900">Puesto de Trabajo</label>
+          <input type="text"
+            formControlName="puesto"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          >
+          <span class="text-sm text-red-500" *ngIf="form.get('puesto')?.hasError('required') && form.get('puesto')?.touched">
+            El campo <strong>puesto</strong> es obligatorio
+          </span>
+        </div>
+        <div class="w-full">
+          <label for="salario" class="block mb-2 text-sm text-gray-900">Salario</label>
+          <input type="number"
+            formControlName="salario"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="$0"
+          >
+          <span class="text-sm text-red-500" *ngIf="form.get('salario')?.hasError('required') && form.get('salario')?.touched">
+            El campo <strong>salario</strong> es obligatorio
+          </span>
+        </div>
+        <div>
+          <label for="departamento"
+            class="block mb-2 text-sm text-gray-900">Departamento</label>
+          <select
+            formControlName="departamento"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+            <option selected="" disabled selected>Seleccionar Departamento</option>
+            <option value="1">Calidad</option>
+            <option value="2">Consultoría</option>
+            <option value="3">Diseño</option>
+            <option value="4">Finanzas</option>
+            <option value="5">Marketing</option>
+            <option value="6">Tecnología</option>
+            <option value="7">Recursos Humanos</option>
+            <option value="8">Ventas</option>
+          </select>
+          <span class="text-sm text-red-500" *ngIf="form.get('departamento')?.hasError('required') && form.get('departamento')?.touched">
+            El campo <strong>departamento</strong> es obligatorio
+          </span>
+        </div>
 
+        <div class="sm:col-span-2">
+          <label for="ubicacion" class="block mb-2 text-sm text-gray-900">Ubicación</label>
+          <input type="text"
+            formControlName="ubicacion"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="Ciudad">
+          <span class="text-sm text-red-500" *ngIf="form.get('ubicacion')?.hasError('required') && form.get('ubicacion')?.touched">
+            El campo <strong>ubicacion</strong> es obligatorio
+          </span>
+        </div>
 
-          <section class="bg-white">
-            <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-                <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-black">Agregar nuevo empleado</h2>
-                <form (ngSubmit)="addEmployee()">
-                    <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                        <div class="sm:col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nombre del Empleado</label>
-                            <input [(ngModel)]="newEmployee.nombre" [ngModelOptions]="{standalone: true}" type="text" name="name" id="name" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe el nombre del empleado" required="">
-                        </div>
-                        <div class="w-full">
-                            <label for="puesto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Puesto de Trabajo</label>
-                            <input [(ngModel)]="newEmployee.puesto" [ngModelOptions]="{standalone: true}" type="text" name="puesto" id="puesto" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rol" required="">
-                        </div>
-                        <div class="w-full">
-                            <label for="salario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Salario</label>
-                            <input [(ngModel)]="newEmployee.salario" [ngModelOptions]="{standalone: true}" type="number" name="salario" id="salario" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$0" required="">
-                        </div>
-                        <div>
-                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Departamento</label>
-                            <select [(ngModel)]="newEmployee.departamento" [ngModelOptions]="{standalone: true}" id="category" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="" disabled selected>Seleccionar Departamento</option>
-                                <option value="Calidad">Calidad</option>
-                                <option value="Consultoría">Consultoría</option>
-                                <option value="Diseño">Diseño</option>
-                                <option value="Finanzas">Finanzas</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Tecnología">Tecnología</option>
-                                <option value="Recursos">Recursos Humanos</option>
-                                <option value="Ventas">Ventas</option>
-                            </select>
-                        </div>
+        <div class="sm:col-span-2">
+          <label for="telefono" class="block mb-2 text-sm text-gray-900">Telefono</label>
+          <input type="text"
+            formControlName="telefono"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            placeholder="123-456-7890">
+        </div>
+        <span class="text-sm text-red-500" *ngIf="form.get('telefono')?.hasError('required') && form.get('telefono')?.touched">
+          El campo <strong>telefono</strong> es obligatorio
+        </span>
 
-                        <div class="w-full">
-                          <label for="ubicacion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Ubicación</label>
-                          <input [(ngModel)]="newEmployee.ubicacion" [ngModelOptions]="{standalone: true}" type="text" name="ubicacio" id="ubicacion" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ciudad" required="">
-                        </div>
-
-                        <div class="w-full">
-                          <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Telefono</label>
-                          <input [(ngModel)]="newEmployee.telefono" [ngModelOptions]="{standalone: true}" type="text" name="telefono" id="telefono" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="123-456-7890" required="">
-                        </div>
-
-                    </div>
-                    <button type="submit" class="inline-flex items-center px-5 py-2.5 mr-20 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5" >
-                      Agregar Empleado
-                    </button>
-                    <button type="button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-700 hover:bg-slate-800 font-medium rounded-lg text-sm px-5 py-2.5" routerLink="/home">
-                      Volver
-                    </button>
-                </form>
-            </div>
-          </section>
+      </div>
+      <div class="w-full flex justify-between mt-4 sm:mt-6">
+        <button type="submit"
+          class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg">
+          Agregar
+        </button>
+        <button type="button"
+          class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 hover:bg-red-700 rounded-lg"
+          routerLink="/home">
+          Volver
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

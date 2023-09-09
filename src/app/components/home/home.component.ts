@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {EmployeesService} from '../../services/employees.service';
-import { NgFor } from '@angular/common';
-
+import { Employee, EmployeesService } from '../../services/employees.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +8,34 @@ import { NgFor } from '@angular/common';
 })
 
 export class HomeComponent {
-emp?: any;
-constructor (private employeesService: EmployeesService) {
-  this.emp = this.employeesService.getEmployees();
+
+  employees: any[] = [];
+
+constructor (private employeesService: EmployeesService) {}
+
+ngOnInit() {
+  
+  this.getEmployees();
+  
 }
+
+getEmployees() {
+  this.employeesService.indexEmployees()
+    .subscribe( data => {
+      console.log(data);
+      this.employees = data;
+    });
+}
+
+deleteEmployee(id: number, i: number) {
+
+  return this.employeesService.deleteEmployee(id)
+              .subscribe( () => {
+                console.log('eliminado')
+                this.employees.splice(i, 1);
+              } )
+
+}
+
+
 }
