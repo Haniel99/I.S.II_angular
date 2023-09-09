@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { toggle } from '../components.actions';
+import { toggle, toggleForm } from '../components.actions';
 import { Employee, EmployeesService } from '../../services/employees.service';
 
 @Component({
@@ -10,9 +10,30 @@ import { Employee, EmployeesService } from '../../services/employees.service';
 })
 export class HomeComponent {
   employees?: any;
+  toggle?: boolean; 
+  toggleF?: boolean;
+  employeeId: number=-1;
 
-  constructor(private employeesService: EmployeesService) {}
-
+  constructor(
+    private employeesService: EmployeesService,
+    private store: Store<{toggle: boolean, toggleForm: boolean}>
+    ) {
+      this.store.select('toggle').subscribe(state=>{
+        this.toggle = state;
+      })
+      this.store.select('toggleForm').subscribe(state=>{ 
+        this.toggleF = state;
+       });
+    }
+    toggleForms(){
+      console.log("cambia");
+      this.store.dispatch(toggleForm());
+    }
+    click(e: any){
+      console.log(e);
+      this.employeeId=e;
+      this.store.dispatch(toggle());
+    }
   ngOnInit() {
     this.getEmployees();
   }

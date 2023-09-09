@@ -1,11 +1,11 @@
 <!-- Filtros y agregar -->
-<app-delete *ngIf="toggle" ></app-delete>
+<app-delete *ngIf="toggle" [employeeId]="employeeId"></app-delete>
+<app-modal *ngIf="toggleF"></app-modal>
 <div class="flex justify-between mt-14 container m-auto">
     <div class="flex ">
-
         <div class="flex mr-4">
             <div
-                class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
+                class="flex-shrink-0  inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
                 Ordenar por
             </div>
             <select
@@ -18,7 +18,7 @@
 
         <div class="flex">
             <div
-                class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
+                class="flex-shrink-0  inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
                 Filtrar por departamento
             </div>
             <select
@@ -31,7 +31,11 @@
 
     </div>
 
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5" routerLink="/create">
+    <button 
+    (click)="toggleForms()"
+    type="button" 
+    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
+        >
         <i class="fa-solid fa-plus"></i>
         Agregar
     </button>
@@ -42,7 +46,8 @@
     <div class="flex justify-between items-center p-6">
         <h1 class="font-bold text-xl">EMPLEADOS</h1>
         <div class="relative pull-right pl-4 pr-4 md:pr-0">
-            <input type="search" placeholder="Search" class="w-full bg-white text-sm text-black transition border border-gray-200 focus:outline-none focus:border-gray-600 rounded py-1 px-2 pl-10 appearance-none leading-normal">
+            <input type="search" placeholder="Search"
+                class="w-full bg-white text-sm text-black transition border border-gray-200 focus:outline-none focus:border-gray-600 rounded py-1 px-2 pl-10 appearance-none leading-normal">
             <div class="absolute search-icon" style="top: 0.220rem;left: 1.75rem;">
                 <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
             </div>
@@ -85,47 +90,50 @@
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="flex items-center">
-                              <p>{{emp.id}}</p>
+                                <p>{{emp.id}}</p>
                             </div>
-            
-                          </td>
-            
-                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="text-sm leading-5 text-gray-900">
-                              <p>{{emp.nombre}} {{emp.apellido}}</p>
-                            </div>
-                          </td>
-            
-                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                              <p>{{emp.puesto}}</p>
-                          </td>
-            
-                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                              <p>{{emp.salario}}</p>
-                          </td>
-          
-                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                              <div class="text-sm leading-5 text-gray-900">
-                                <p>{{emp.departamento.nombre}}</p>  
-                              </div>
-                          </td>
-          
-                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                              <div class="text-sm leading-5 text-gray-900">
-                                <p>{{emp.ubicacion}}</p>  
-                              </div>
-                          </td>
-          
-                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                              <p>{{emp.telefono}}</p>
-                          </td>
 
-                        <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
+                        </td>
+
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">
+                                <p>{{emp.nombre}} {{emp.apellido}}</p>
+                            </div>
+                        </td>
+
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <p>{{emp.puesto}}</p>
+                        </td>
+
+                        <td
+                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                            <p>{{emp.salario}}</p>
+                        </td>
+
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">
+                                <p>{{emp.departamento.nombre}}</p>
+                            </div>
+                        </td>
+
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">
+                                <p>{{emp.ubicacion}}</p>
+                            </div>
+                        </td>
+
+                        <td
+                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                            <p>{{emp.telefono}}</p>
+                        </td>
+
+                        <td
+                            class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                             <button>
                                 <i class="fa-regular fa-pen-to-square fa-xl text-indigo-600 hover:text-indigo-900"></i>
                             </button>
                         <td class="text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
-                            <button (click)="deleteEmployee(emp.id, i)">
+                            <button (click)="click(emp.id)">
                                 <i class="fa-regular fa-trash-can fa-xl text-red-600 hover:text-red-800"></i>
                             </button>
                         </td>
@@ -135,4 +143,3 @@
         </div>
     </div>
 </div>
-

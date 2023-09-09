@@ -27,7 +27,7 @@ export class EmployeesService {
 
   indexEmployees(){
 
-    return this.http.get(`${this.url}/index`)
+    return this.http.post(`${this.url}/index`,{})
             .pipe(
               map( (data: any) => data['response'] )
             )

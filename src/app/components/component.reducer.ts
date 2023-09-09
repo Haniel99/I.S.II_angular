@@ -5,8 +5,7 @@ export const initialState = false;
 
 export const counterReducer = createReducer(
   initialState,
-  on(toggle, (state) => !state),
-   
+  on(toggle, (state) => !state)
 );
 
 

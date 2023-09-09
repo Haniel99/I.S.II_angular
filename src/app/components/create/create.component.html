@@ -89,13 +89,15 @@
 
       </div>
       <div class="w-full flex justify-between mt-4 sm:mt-6">
-        <button type="submit"
+        <button 
+        type="submit"
           class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg">
           Agregar
         </button>
-        <button type="button"
-          class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 hover:bg-red-700 rounded-lg"
-          routerLink="/home">
+        <button 
+        (click)="volver()"
+        type="button"
+          class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 hover:bg-red-700 rounded-lg">
           Volver
         </button>
       </div>
