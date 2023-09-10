@@ -13,7 +13,8 @@ import { EmployeesService } from './services/employees.service';
 import { counterReducer } from './components/component.reducer';
 import { toggleFormState } from "./components/componet.form";
 import { ModalComponent } from './components/modal/modal.component';
-
+import { addEmployee } from './components/compoenet.add';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +29,9 @@ import { ModalComponent } from './components/modal/modal.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({ toggle: counterReducer, toggleForm: toggleFormState }),
+    StoreModule.forRoot({ toggle: counterReducer, toggleForm: toggleFormState, add: addEmployee }),
     ReactiveFormsModule,
+    FontAwesomeModule
     
   ],
   providers: [

@@ -24,12 +24,12 @@
           </span>
         </div>
         <div class="sm:col-span-2">
-          <label for="puesto" class="block mb-2 text-sm text-gray-900">Puesto de Trabajo</label>
+          <label for="rol_id" class="block mb-2 text-sm text-gray-900">Puesto de Trabajo</label>
           <input type="text"
-            formControlName="puesto"
+            formControlName="rol_id"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           >
-          <span class="text-sm text-red-500" *ngIf="form.get('puesto')?.hasError('required') && form.get('puesto')?.touched">
+          <span class="text-sm text-red-500" *ngIf="form.get('rol_id')?.hasError('required') && form.get('rol_id')?.touched">
             El campo <strong>puesto</strong> es obligatorio
           </span>
         </div>
@@ -45,10 +45,10 @@
           </span>
         </div>
         <div>
-          <label for="departamento"
+          <label for="departamento_id"
             class="block mb-2 text-sm text-gray-900">Departamento</label>
           <select
-            formControlName="departamento"
+            formControlName="departamento_id"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             <option selected="" disabled selected>Seleccionar Departamento</option>
             <option value="1">Calidad</option>
@@ -60,7 +60,7 @@
             <option value="7">Recursos Humanos</option>
             <option value="8">Ventas</option>
           </select>
-          <span class="text-sm text-red-500" *ngIf="form.get('departamento')?.hasError('required') && form.get('departamento')?.touched">
+          <span class="text-sm text-red-500" *ngIf="form.get('departamento_id')?.hasError('required') && form.get('departamento_id')?.touched">
             El campo <strong>departamento</strong> es obligatorio
           </span>
         </div>

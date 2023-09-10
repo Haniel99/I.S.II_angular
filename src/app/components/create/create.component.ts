@@ -3,7 +3,7 @@ import { EmployeesService, Employee } from '../../services/employees.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {  toggleForm } from '../components.actions';
+import {  toggleForm, add } from '../components.actions';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -19,9 +19,9 @@ export class CreateComponent {
       this.form = this.formBuilder.group({
         nombre: ['', Validators.required],
         apellido: ['', Validators.required],
-        puesto: ['', Validators.required],
+        departamento_id: [null, Validators.required],
         salario: [null, Validators.required],
-        departamento: ['', Validators.required],
+        rol_id: [null, Validators.required],
         ubicacion: ['', Validators.required],
         telefono: ['', Validators.required],
       })
@@ -37,14 +37,15 @@ export class CreateComponent {
     const employee: Employee = {
       nombre: this.form.value.nombre,
       apellido: this.form.value.apellido,
-      puesto: this.form.value.puesto,
+      departamento_id: parseInt(this.form.value.departamento_id),
       salario: this.form.value.salario,
-      departamento_id: parseInt(this.form.value.departamento),
+      rol_id: parseInt(this.form.value.rol_id),
       ubicacion: this.form.value.ubicacion,
       telefono: this.form.value.telefono
     }
-
-    this.employeesService.createEmployee(employee);
+    this.employeesService.createEmployee(employee).subscribe(res=>{
+      this.store.dispatch(add());
+    });
     this.store.dispatch(toggleForm());
   }
 

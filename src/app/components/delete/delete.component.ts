@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { toggle } from '../components.actions';
-import {  EmployeesService } from "../../services/employees.service";
+import { toggle, add } from '../components.actions';
+import {   EmployeesService } from "../../services/employees.service";
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
@@ -10,19 +10,21 @@ import {  EmployeesService } from "../../services/employees.service";
 
 export class DeleteComponent {
   toggle?:boolean;
+  add?: boolean;
   @Input()  employeeId: number = -1;
+  @Input() employees?: any;  
   constructor(
     private service: EmployeesService,
-    private store: Store<{toggle: boolean}> ){
+    private store: Store<{toggle: boolean, add: boolean}> ){
     this.store.select('toggle').subscribe(state=>{
       this.toggle = state;
-    })
+    });
   }
-
+  
   deleteEmployee(){
     this.service.deleteEmployee(this.employeeId).subscribe(res=>{
-      console.log(res);
       this.store.dispatch(toggle());
+      this.store.dispatch(add());
     });
   }
 
