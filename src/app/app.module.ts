@@ -15,6 +15,7 @@ import { toggleFormState } from "./components/componet.form";
 import { ModalComponent } from './components/modal/modal.component';
 import { addEmployee } from './components/compoenet.add';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchEmployeeDirective } from './components/home/search-employee.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CreateComponent,
     UpdateComponent,
     DeleteComponent,
-    ModalComponent
+    ModalComponent,
+    SearchEmployeeDirective
   ],
   imports: [
     BrowserModule,

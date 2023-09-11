@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { toggle, toggleForm, add } from '../components.actions';
 import { EmployeesService } from '../../services/employees.service';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
+
 interface IFiltros {
   order_by?: string; //"nombre"
   type_order: boolean; //true or false
@@ -17,6 +18,7 @@ interface IFiltros {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
+  dataFromDirective?: any;
   employees?: any;
   toggle?: boolean;
   toggleF?: boolean;
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
   filter: any = faFilter;
   constructor(
     private employeesService: EmployeesService,
-    private store: Store<{ toggle: boolean; toggleForm: boolean; add: boolean }>
+    private store: Store<{ toggle: boolean; toggleForm: boolean; add: boolean }>,
   ) {
     this.store.select('toggle').subscribe((state) => {
       this.toggle = state;
@@ -40,6 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
     this.store.select('add').subscribe((state) => {
       this.add = state;
     });
+    
   }
   ngAfterViewInit() {}
 
@@ -86,9 +89,15 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   applyFilter() {
-    console.log(this.filtros);
     this.employeesService.indexLazyEmployees(this.filtros).subscribe((data) => {
       this.employees = data;
     });
+  }
+  setDataFromDirective(data: any){
+    this.dataFromDirective = data;
+  }
+  selectEmployee(data: any){
+    this.employees = [data];
+    this.dataFromDirective = [];
   }
 }
