@@ -1,5 +1,5 @@
 <!-- Filtros y agregar -->
-<app-delete *ngIf="toggle" [employeeId]="employeeId" ></app-delete>
+<app-delete *ngIf="toggle" [employeeId]="employeeId"></app-delete>
 <app-modal *ngIf="toggleF"></app-modal>
 <div class="flex justify-between mt-14 container m-auto">
     <div class="flex ">
@@ -8,14 +8,13 @@
                 class="flex-shrink-0  inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
                 Ordenar por
             </div>
-            <select
-            (click)="selectOrderType($event)"
+            <select (click)="selectOrderType($event)"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full p-2.5 focus:outline-none">
                 <option selected>Ninguno</option>
                 <option value="nombre">Nombre</option>
                 <option value="salario">Salario</option>
             </select>
-           
+
         </div>
 
         <div class="flex">
@@ -23,8 +22,7 @@
                 class="flex-shrink-0  inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-l-lg">
                 Filtrar por departamento
             </div>
-            <select
-                (click)="selectDepartment($event)"
+            <select (click)="selectDepartment($event)"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 border-l-2 block w-full p-2.5 focus:outline-none">
                 <option selected>Todos</option>
                 <option value="1">Departamento 1</option>
@@ -32,18 +30,14 @@
             </select>
         </div>
         <div class="flex ml-4">
-            <button
-            (click)="applyFilter()" 
-            class="border rounded-md p-3"><fa-icon [icon]="filter"></fa-icon>Aplicar filtros</button>
+            <button (click)="applyFilter()" class="border rounded-md p-3"><fa-icon [icon]="filter"></fa-icon>Aplicar
+                filtros</button>
         </div>
 
     </div>
 
-    <button 
-    (click)="toggleForms()"
-    type="button" 
-    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
-        >
+    <button (click)="toggleForms()" type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">
         <i class="fa-solid fa-plus"></i>
         Agregar
     </button>
@@ -54,12 +48,17 @@
     <div class="flex justify-between items-center p-6">
         <h1 class="font-bold text-xl">EMPLEADOS</h1>
         <div class="relative pull-right pl-4 pr-4 md:pr-0">
-            <input type="search" appSearchEmployee [datos]="employees"   (salida)="setDataFromDirective($event)" placeholder="Search"
-                class="w-full bg-white text-sm text-black transition border border-gray-200 focus:outline-none focus:border-gray-600 rounded py-1 px-2 pl-10 appearance-none leading-normal">
-                <div class="absolute search-icon" style="top: 0.220rem;left: 1.75rem;">
+            <input
+                class="bg-white text-sm text-black transition border border-gray-200 focus:outline-none focus:border-gray-600 rounded py-1 px-2 pl-10 appearance-none leading-normal"
+                type="search" appSearchEmployee (salida)="setDataFromDirective($event)"
+                placeholder="Search">
+            
+            <div class="absolute search-icon" style="top: 0.220rem;left: 1.75rem;">
                 <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
             </div>
         </div>
+
+
     </div>
     <div class="overflow-x-auto">
         <div class="inline-block min-w-full overflow-hidden align-middle">

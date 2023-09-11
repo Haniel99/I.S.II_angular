@@ -16,6 +16,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { addEmployee } from './components/compoenet.add';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchEmployeeDirective } from './components/home/search-employee.directive';
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { SearchEmployeeDirective } from './components/home/search-employee.direc
     FormsModule,
     StoreModule.forRoot({ toggle: counterReducer, toggleForm: toggleFormState, add: addEmployee }),
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgSelectModule
     
   ],
   providers: [

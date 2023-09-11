@@ -18,12 +18,12 @@ interface IFiltros {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
-
   employees?: any;
   toggle?: boolean;
   toggleF?: boolean;
   employeeId: number = -1;
   add?: boolean = false;
+  numero?: number;
   filtros: IFiltros = {
     type_order: false, //true or false
     condition: {},
