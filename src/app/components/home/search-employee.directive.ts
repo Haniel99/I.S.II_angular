@@ -20,15 +20,14 @@ export class SearchEmployeeDirective {
 
   @HostListener('input', ['$event']) onEnterText(event: Event) {
     const valor = (event.target as HTMLInputElement).value;
-    console.log(valor);
-    const nomreApellido = this.datos.filter((value: any) => {
+    const employees = this.datos.filter((value: any) => {
       return (
         value.nombre.toLowerCase().startsWith(valor.toLowerCase()) ||
         value.apellido.toLowerCase().startsWith(valor.toLowerCase())
       );
     });
     if (valor !== '') {
-      this.salida.emit(nomreApellido); //Emite arreglo de posibles canditados
+      this.salida.emit(employees); //Emite arreglo de posibles canditados
     } else {
       this.salida.emit([]); //Emite arreglo de posibles canditados
       this.store.dispatch(add());

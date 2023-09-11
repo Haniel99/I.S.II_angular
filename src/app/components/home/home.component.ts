@@ -18,7 +18,7 @@ interface IFiltros {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
-  dataFromDirective?: any;
+
   employees?: any;
   toggle?: boolean;
   toggleF?: boolean;
@@ -94,10 +94,6 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
     });
   }
   setDataFromDirective(data: any){
-    this.dataFromDirective = data;
-  }
-  selectEmployee(data: any){
-    this.employees = [data];
-    this.dataFromDirective = [];
+    this.employees = data;
   }
 }

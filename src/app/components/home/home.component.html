@@ -56,17 +56,8 @@
         <div class="relative pull-right pl-4 pr-4 md:pr-0">
             <input type="search" appSearchEmployee [datos]="employees"   (salida)="setDataFromDirective($event)" placeholder="Search"
                 class="w-full bg-white text-sm text-black transition border border-gray-200 focus:outline-none focus:border-gray-600 rounded py-1 px-2 pl-10 appearance-none leading-normal">
-                <div  *ngIf="dataFromDirective"  class=" absolute flex flex-col" >
-                    <label  
-                    (click) = "selectEmployee(i)"
-                    *ngFor="let i of dataFromDirective" 
-                    class="bg-white text-sm text-black focus:border-gray-600 cursor-pointer  px-10 py-1  rounded-sm" >
-                    {{i.nombre +" "+ i.apellido}} </label>
-                </div>
                 <div class="absolute search-icon" style="top: 0.220rem;left: 1.75rem;">
-                <i 
-                (click)="getEmployees()"
-                class="fa-solid fa-magnifying-glass text-gray-500"></i>
+                <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
             </div>
         </div>
     </div>
