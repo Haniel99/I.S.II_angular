@@ -26,6 +26,11 @@ export class EmployeesService {
       .post(`${this.url}/index`, {})
       .pipe(map((data: any) => data['response']));
   }
+  viewEmployee(id: number) {
+    return this.http
+      .get(`${this.url}/view/${id}`)
+      .pipe(map((data: any) => data['response']));
+  }
   indexLazyEmployees(body: any) {
     return this.http
       .post(`${this.url}/index`, body)
@@ -37,5 +42,8 @@ export class EmployeesService {
 
   deleteEmployee(id: number) {
     return this.http.delete(`${this.url}/delete/${id}`);
+  }
+  updateEmployee(data:any, id:number){
+    return this.http.put(`${this.url}/update/${id}`, data);
   }
 }

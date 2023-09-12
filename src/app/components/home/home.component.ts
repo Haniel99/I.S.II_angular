@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, DoCheck } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { toggle, toggleForm, add } from '../components.actions';
+import { toggle, toggleForm, add,toggleUpdate } from '../components.actions';
 import { EmployeesService } from '../../services/employees.service';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
   employeeId: number = -1;
   add?: boolean = false;
   numero?: number;
+  toggleUpdate: boolean = true;
+  dataEmployeeForUpdate:number = -1;
   filtros: IFiltros = {
     type_order: false, //true or false
     condition: {},
@@ -31,8 +33,9 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
   filter: any = faFilter;
   constructor(
     private employeesService: EmployeesService,
-    private store: Store<{ toggle: boolean; toggleForm: boolean; add: boolean }>,
-  ) {
+    private store: Store<{ toggle: boolean; toggleForm: boolean; add: boolean, toggleUpdate: boolean }>,
+    
+    ) {
     this.store.select('toggle').subscribe((state) => {
       this.toggle = state;
     });
@@ -42,8 +45,12 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
     this.store.select('add').subscribe((state) => {
       this.add = state;
     });
+    this.store.select('toggleUpdate').subscribe(state=>{
+      this.toggleUpdate = state;
+    })
     
   }
+  
   ngAfterViewInit() {}
 
   ngDoCheck() {
@@ -52,13 +59,16 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
       this.store.dispatch(add());
     }
   }
+
   toggleForms() {
     this.store.dispatch(toggleForm());
   }
+
   click(id: any) {
     this.employeeId = id;
     this.store.dispatch(toggle());
   }
+
   ngOnInit() {
     this.getEmployees();
   }
@@ -95,5 +105,9 @@ export class HomeComponent implements OnInit, AfterViewInit, DoCheck {
   }
   setDataFromDirective(data: any){
     this.employees = data;
+  }
+  updateEmployee(emp:any){
+    this.dataEmployeeForUpdate=emp; 
+    this.store.dispatch(toggleUpdate());
   }
 }

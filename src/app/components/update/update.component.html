@@ -1,1 +1,105 @@
-<p>update works!</p>
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">Fondo gris</div>
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div
+                class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <section class="container mx-auto py-12">
+                            <div class="flex flex-col items-center">
+                                <h2 class="mb-10 text-2xl font-bold text-gray-900">Actualizar Empleado</h2>
+                                <form [formGroup]="form" (ngSubmit)="updateEmployee()">
+                                    <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                                        <div class="w-full">
+                                            <label for="name" class="block mb-2 text-sm text-gray-900">Nombre</label>
+                                            <input type="text" [placeholder]="employees.nombre" formControlName="nombre"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="apellido"
+                                                class="block mb-2 text-sm text-gray-900">Apellido</label>
+                                            <input type="text" [placeholder]="employees.apellido"
+                                                formControlName="apellido"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                                        </div>
+                                        <div class="sm:col-span-2">
+                                            <label for="rol_id" class="block mb-2 text-sm text-gray-900">Puesto de
+                                                Trabajo</label>
+                                            <input type="text" [placeholder]="employees.rol.nombre"
+                                                formControlName="rol_id"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="salario"
+                                                class="block mb-2 text-sm text-gray-900">Salario</label>
+                                            <input type="number" [placeholder]="employees.salario"
+                                                formControlName="salario"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                                placeholder="$0">
+                                        </div>
+                                        <div>
+                                            <label for="departamento_id"
+                                                class="block mb-2 text-sm text-gray-900">Departamento</label>
+                                            <select 
+                                                formControlName="departamento_id"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                                                <option value="" selected disabled>Seleccionar Departamento</option>
+                                                <option value="1" [selected]="employees.departamento_id === 1">Calidad
+                                                </option>
+                                                <option value="2" [selected]="employees.departamento_id === 2">
+                                                    Consultoría</option>
+                                                <option value="3" [selected]="employees.departamento_id === 3">Diseño
+                                                </option>
+                                                <option value="4" [selected]="employees.departamento_id === 4">Finanzas
+                                                </option>
+                                                <option value="5" [selected]="employees.departamento_id === 5">Marketing
+                                                </option>
+                                                <option value="6" [selected]="employees.departamento_id === 6">
+                                                    Tecnología</option>
+                                                <option value="7" [selected]="employees.departamento_id === 7">Recursos
+                                                    Humanos</option>
+                                                <option value="8" [selected]="employees.departamento_id === 8">Ventas
+                                                </option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="sm:col-span-2">
+                                            <label for="ubicacion"
+                                                class="block mb-2 text-sm text-gray-900">Ubicación</label>
+                                            <input type="text" [placeholder]="employees.ubicacion"
+                                                formControlName="ubicacion"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                                placeholder="Ciudad">
+
+                                        </div>
+
+                                        <div class="sm:col-span-2">
+                                            <label for="telefono"
+                                                class="block mb-2 text-sm text-gray-900">Telefono</label>
+                                            <input type="text" [placeholder]="employees.telefono"
+                                                formControlName="telefono"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                                placeholder="123-456-7890">
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex justify-between mt-4 sm:mt-6">
+                                        <button (click)="updateEmployee()" type="submit"
+                                            class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg">
+                                            Actualizar
+                                        </button>
+                                        <button (click)="volver()" type="button"
+                                            class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-red-600 hover:bg-red-700 rounded-lg">
+                                            Volver
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

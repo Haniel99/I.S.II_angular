@@ -1,6 +1,9 @@
 <!-- Filtros y agregar -->
 <app-delete *ngIf="toggle" [employeeId]="employeeId"></app-delete>
 <app-modal *ngIf="toggleF"></app-modal>
+<ng-container *ngIf="toggleUpdate" >
+    <app-update  [dataEmployee] = "dataEmployeeForUpdate" ></app-update>
+</ng-container>
 <div class="flex justify-between mt-14 container m-auto">
     <div class="flex ">
         <div class="flex mr-4">
@@ -136,7 +139,9 @@
 
                         <td
                             class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
-                            <button>
+                            <button
+                            (click)="updateEmployee(emp.id)"
+                            >
                                 <i class="fa-regular fa-pen-to-square fa-xl text-indigo-600 hover:text-indigo-900"></i>
                             </button>
                         <td class="text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200 ">
